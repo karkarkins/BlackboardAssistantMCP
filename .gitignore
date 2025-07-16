@@ -1,6 +1,0 @@
-__pycache__/
-.env
-*.log
-*.sqlite
-data/
-notebooks/

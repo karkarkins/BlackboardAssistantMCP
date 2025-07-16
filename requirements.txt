@@ -1,7 +1,0 @@
-openai
-langchain
-selenium
-playwright
-pymupdf  # or pdfminer.six
-flask    # or fastapi
-python-dotenv
