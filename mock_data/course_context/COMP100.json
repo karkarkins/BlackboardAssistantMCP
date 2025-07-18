@@ -1,0 +1,31 @@
+{
+  "course_id": "_comp100_1",
+  "course_name": "COMP100 - Introduction to Computing",
+  "instructor": "Prof. Ada Lovelace",
+  "syllabus": {
+    "essay_format": "MLA",
+    "code_format": "Python PEP8",
+    "collaboration": "Individual Only"
+  },
+  "assignments": [
+    {
+      "title": "Intro to Python",
+      "due_date": "2025-09-01",
+      "description_file": "mock_data/assignments/intro_python.html",
+      "rubric_file": "mock_data/assignments/intro_python_rubric.pdf",
+      "status": "not started"
+    },
+    {
+      "title": "Simple Calculator App",
+      "due_date": "2025-09-10",
+      "description_file": "mock_data/assignments/calculator_app.html",
+      "rubric": [
+        "Functionality",
+        "Code style (PEP8)",
+        "User interface design",
+        "Documentation"
+      ],
+      "status": "not started"
+    }
+  ]
+}
