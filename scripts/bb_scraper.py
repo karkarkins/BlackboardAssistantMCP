@@ -1,3 +1,8 @@
+"""
+Future Extensions:
+Integrate with context_builder.py to store assignment context in json format.
+"""
+
 import asyncio
 from playwright.async_api import async_playwright
 from dotenv import load_dotenv
