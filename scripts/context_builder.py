@@ -1,8 +1,10 @@
 """
 Future Extensions: 
+Create course context files(to a courses directory) if not encountered before.
+Modify context files when needed(e.g. course gains new assignments).
 Add support for quizzes, discussion boards, and other Blackboard content types.
 PDF Handling: Implement PDF parsing for assignments with PDF descriptions.
-Return only active assignmenrts: Filter out inactive or past assignments.
+Return only active assignments: Filter out inactive or past assignments.
 """
 
 # This script builds a structured context from a Blackboard course JSON export.
