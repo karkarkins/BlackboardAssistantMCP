@@ -23,11 +23,15 @@ async def scrape_blackboard():
         print("Navigating to Blackboard login page...")
         await page.goto(BB_LOGIN_URL)
 
-        await page.wait_for_selector('input[name="user_id"]')
+        print("Clicking HERE link to go to student login...")
+        await page.click("text=HERE")
 
-        await page.fill('input[name="user_id"]', BB_USERNAME)
-        await page.fill('input[name="password"]', BB_PASSWORD)
-        await page.click('#entry-login')
+        await page.wait_for_selector('input[name="loginfmt"]')
+
+        await page.fill('input[name="loginfmt"]', BB_USERNAME)
+        await page.click('#idSIButton9')
+        await page.fill('input[name="passwd"]', BB_PASSWORD)
+        await page.click('#idSIButton9')
 
         await page.wait_for_load_state('networkidle')
 
