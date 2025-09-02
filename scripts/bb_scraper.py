@@ -44,12 +44,29 @@ async def scrape_blackboard():
 
         # Wait for course tiles to appear
         await page.wait_for_selector('a.course-title')
+        
+        # focus the main scrollable list
+        await page.click("label:has-text('View Course List')")
+
+        # then scroll with keyboard
+        for _ in range(20):   # adjust how many times
+            await page.keyboard.press("PageDown")
+            await asyncio.sleep(0.5)
+
+
         course_links = await page.query_selector_all('a.course-title')
 
-        print(f"Found {len(course_links)} courses:")
+        CURRENT_TERM = "202610"
+
+        filtered_courses = []
         for link in course_links:
             course_title = await link.inner_text()
-            print("-", course_title.strip())
+            if CURRENT_TERM in course_title:
+                filtered_courses.append(course_title.strip())
+
+        print(f"Found {len(filtered_courses)} courses:")
+        for course in filtered_courses:
+            print("-", course)
 
         await browser.close()
 
