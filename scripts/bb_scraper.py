@@ -49,24 +49,88 @@ async def scrape_blackboard():
         await page.click("label:has-text('View Course List')")
 
         # then scroll with keyboard
-        for _ in range(20):   # adjust how many times
+        for _ in range(5):   # adjust how many times
             await page.keyboard.press("PageDown")
             await asyncio.sleep(0.5)
-
+                
 
         course_links = await page.query_selector_all('a.course-title')
 
+        results = []
+
         CURRENT_TERM = "202610"
 
-        filtered_courses = []
+        filtered_links = []
         for link in course_links:
             course_title = await link.inner_text()
             if CURRENT_TERM in course_title:
-                filtered_courses.append(course_title.strip())
+                filtered_links.append(link)
 
-        print(f"Found {len(filtered_courses)} courses:")
-        for course in filtered_courses:
-            print("-", course)
+        print(f"Found {len(filtered_links)} courses:")
+        for course_link in filtered_links:
+            course_title = await course_link.inner_text()
+            print(f"Scraping course: {course_title}")
+
+            await course_link.click()
+            await asyncio.sleep(2)
+            await page.wait_for_load_state('networkidle')
+
+            course_data = {
+                "course_name": course_title,
+                "course_url": page.url,
+                "contents": [],
+                "discussions": []
+            }
+            
+            print(course_data)
+            print("---------------------------------------------")
+
+
+            # Scrape course content here
+            try:
+                print(" Accessing Course Content...")
+
+                # Find the classic course iframe
+                frame = page.frame(name="classic-learn-iframe")
+
+                # Verify we found it
+                if frame:
+                    element = await frame.query_selector("span[title='Course Content']")
+                    if element:
+                        await element.click()
+                        print("Clicked Course Content")
+                    else:
+                        print("Course Content not found inside iframe.")
+                else:
+                    print("classic-learn-iframe not found.")
+                
+                """
+                for frame in page.frames:
+                    print("Frame name:", frame.name, "URL:", frame.url)
+
+                elements = await page.query_selector_all("span")
+                print(f" Found {len(elements)} elements with titles:")
+                for el in elements:
+                    text = await el.inner_text()
+                    print("SPAN:", text)
+                """
+
+                if await page.query_selector("li a:has(span[title='Course Content'])"):
+                    print("Found Course Content link, clicking...")
+                    await page.click("a[title='Course Content']")
+                    await page.wait_for_load_state('networkidle')
+
+                    content_items = await page.query_selector_all("div.content-list")
+                    for item in content_items:
+                        text = await item.inner_text()
+                        print(f"  Found content item: {text}")
+                        if text:
+                            course_data["contents"].append({"title": text})
+                    await page.click('button.bb-close')
+            except Exception as e:
+                print(f" No Course Content found for {course_title}: {e}")
+
+            results.append(course_data)
 
         await browser.close()
 
