@@ -1,34 +1,34 @@
 # Blackboard Assistant
 
-An AI-driven automation system for Blackboard Learn that scrapes, organizes, and contextualizes academic course data to enable intelligent draft generation, reminders, and task tracking.
+**An AI-driven automation system for Blackboard Learn that scrapes, organizes, and contextualizes academic course data to enable intelligent draft generation, reminders, and task tracking.**
 
 ## 🚀 Features
 
-Course Scraping: Uses Playwright MCP to log in and extract course content, assignments, discussions, and syllabi.
+**Course Scraping:** Uses Playwright MCP to log in and extract course content, assignments, discussions, and syllabi.
 
-Context Memory Layer: Structures course data into JSON, preserving semester context for AI queries.
+**Context Memory Layer:** Structures course data into JSON, preserving semester context for AI queries.
 
-AI Agent Integration: Exposes Blackboard tasks through MCP tools (list_courses, list_assignments, get_course_context) for natural language interaction.
+**AI Agent Integration:** Exposes Blackboard tasks through MCP tools (list_courses, list_assignments, get_course_context) for natural language interaction.
 
-Automation: Supports academic workflows like draft generation, due date reminders, and progress tracking.
+**Automation:** Supports academic workflows like draft generation, due date reminders, and progress tracking.
 
 ## 🏗️ Architecture
 
-The system is built on a 3-layer design:
+The system is built on a **3-layer design**:
 
-Data Collection (Playwright MCP)
+### Data Collection (Playwright MCP)
 
 Authenticates and navigates Blackboard.
 
 Scrapes courses, assignments, discussions, and course content.
 
-Context Memory Layer
+### Context Memory Layer
 
 Stores structured data (JSON per course).
 
 Preserves metadata like due dates, submission links, and references to readings.
 
-AI Agent Layer (MCP)
+### AI Agent Layer (MCP)
 
 Defines MCP tools for Blackboard operations.
 
@@ -98,4 +98,5 @@ Expand MCP tools for direct Blackboard submissions.
 Integrate calendar sync for assignment deadlines.
 
 Extend support beyond Blackboard to other LMS platforms.
+
 
