@@ -1,8 +1,8 @@
-Blackboard Assistant
+# Blackboard Assistant
 
 An AI-driven automation system for Blackboard Learn that scrapes, organizes, and contextualizes academic course data to enable intelligent draft generation, reminders, and task tracking.
 
-🚀 Features
+## 🚀 Features
 
 Course Scraping: Uses Playwright MCP to log in and extract course content, assignments, discussions, and syllabi.
 
@@ -12,7 +12,7 @@ AI Agent Integration: Exposes Blackboard tasks through MCP tools (list_courses, 
 
 Automation: Supports academic workflows like draft generation, due date reminders, and progress tracking.
 
-🏗️ Architecture
+## 🏗️ Architecture
 
 The system is built on a 3-layer design:
 
@@ -36,7 +36,7 @@ Enables AI agents to query memory, fetch assignments, and generate responses in 
 
 Blackboard → Playwright MCP Scraper → Context Memory (JSON) → MCP Agent → AI Assistant
 
-⚙️ Tech Stack
+## ⚙️ Tech Stack
 
 Programming: Python
 
@@ -48,7 +48,7 @@ Data Storage: JSON-based context memory
 
 Environment: dotenv for secrets management
 
-📂 Project Structure
+## 📂 Project Structure
 blackboard-assistant/
 │── scraper.py              # Playwright automation (courses, assignments, discussions)
 │── context_builder.py      # Context memory layer (JSON store)
@@ -57,7 +57,7 @@ blackboard-assistant/
 │── .env                    # Blackboard credentials (not committed)
 │── README.md               # Project documentation
 
-🔧 Setup
+## 🔧 Setup
 
 Clone the repo:
 
@@ -81,7 +81,7 @@ Run the scraper:
 
 python scraper.py
 
-🧑‍💻 Usage
+## 🧑‍💻 Usage
 
 Run scraper.py to collect Blackboard course data.
 
@@ -91,10 +91,11 @@ MCP tools (e.g., list_courses, list_assignments) allow an AI agent to query cour
 
 Run draft_generator.py to create assignment drafts using stored context.
 
-🔮 Future Work
+## 🔮 Future Work
 
 Expand MCP tools for direct Blackboard submissions.
 
 Integrate calendar sync for assignment deadlines.
 
 Extend support beyond Blackboard to other LMS platforms.
+
